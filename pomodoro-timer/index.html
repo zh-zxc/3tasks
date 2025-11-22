@@ -1,73 +1,78 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>番茄钟 - 专注时间管理工具</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>番茄钟</h1>
-            <p>专注时间管理工具</p>
-        </header>
-        
-        <main>
-            <div class="timer-display">
-                <div id="time-display">25:00</div>
-                <div id="timer-mode">工作时间</div>
-            </div>
-            
-            <div class="controls">
-                <button id="start-btn" class="control-btn">开始</button>
-                <button id="pause-btn" class="control-btn">暂停</button>
-                <button id="reset-btn" class="control-btn">重置</button>
-            </div>
-            
-            <div class="mode-selector">
-                <button id="work-mode" class="mode-btn active">工作</button>
-                <button id="break-mode" class="mode-btn">休息</button>
-                <button id="long-break-mode" class="mode-btn">长休</button>
-            </div>
-            
-            <div class="settings">
-                <div class="setting-item">
-                    <label for="work-duration">工作时长(分钟):</label>
-                    <input type="number" id="work-duration" min="1" max="60" value="25">
-                </div>
-                <div class="setting-item">
-                    <label for="break-duration">休息时长(分钟):</label>
-                    <input type="number" id="break-duration" min="1" max="30" value="5">
-                </div>
-                <div class="setting-item">
-                    <label for="long-break-duration">长休时长(分钟):</label>
-                    <input type="number" id="long-break-duration" min="1" max="60" value="15">
-                </div>
-            </div>
-            
-            <div class="task-section">
-                <h3>任务列表</h3>
-                <div class="task-input-container">
-                    <input type="text" id="task-input" placeholder="添加新任务...">
-                    <button id="add-task-btn">添加</button>
-                </div>
-                <ul id="task-list"></ul>
-            </div>
-            
-            <div class="stats">
-                <div class="stat-item">
-                    <span class="stat-label">已完成番茄钟:</span>
-                    <span id="completed-count">0</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-label">当前连续番茄钟:</span>
-                    <span id="current-streak">0</span>
-                </div>
-            </div>
-        </main>
+  <div class="container">
+    <h1>番茄钟</h1>
+    
+    <div class="timer-display">
+      <canvas id="progressCanvas" width="300" height="300"></canvas>
+      <div class="time-text" id="timeText">25:00</div>
     </div>
     
-    <script src="script.js"></script>
+    <div class="controls">
+      <button id="startBtn">开始</button>
+      <button id="pauseBtn">暂停</button>
+      <button id="resetBtn">重置</button>
+    </div>
+    
+    <div class="mode-selector">
+      <button id="workModeBtn" class="mode-btn active">工作</button>
+      <button id="breakModeBtn" class="mode-btn">休息</button>
+      <button id="longBreakModeBtn" class="mode-btn">长休</button>
+    </div>
+    
+    <div class="settings">
+      <div class="setting-group">
+        <label for="workDuration">工作时间 (分钟):</label>
+        <input type="number" id="workDuration" min="1" max="60" value="25">
+      </div>
+      
+      <div class="setting-group">
+        <label for="breakDuration">休息时间 (分钟):</label>
+        <input type="number" id="breakDuration" min="1" max="30" value="5">
+      </div>
+      
+      <div class="setting-group">
+        <label for="longBreakDuration">长休时间 (分钟):</label>
+        <input type="number" id="longBreakDuration" min="1" max="60" value="15">
+      </div>
+    </div>
+    
+    <div class="stats">
+      <div class="stat-item">
+        <span class="stat-label">完成番茄钟:</span>
+        <span class="stat-value" id="completedPomodoros">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">当前连续:</span>
+        <span class="stat-value" id="currentStreak">0</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-label">最长连续:</span>
+        <span class="stat-value" id="longestStreak">0</span>
+      </div>
+    </div>
+    
+    <div class="task-section">
+      <h2>任务列表</h2>
+      <div class="add-task">
+        <input type="text" id="taskInput" placeholder="添加新任务...">
+        <button id="addTaskBtn">添加</button>
+      </div>
+      <ul id="taskList"></ul>
+    </div>
+  </div>
+  
+  <audio id="alarmSound" preload="auto">
+    <source src="data:audio/mpeg;base64,SUQzBAAAAAABEVRYWFgAAAAtAAADY29tbWVudABCaWdTb3VuZEJhbmsuY29tIC8gTGFTb25vdGhlcXVlLm9yZwBURU5DAAAAHQAAA1N3aXRjaCBQbHVzIMKpIE5DSCBTb2Z0d2FyZQBUSVQyAAAABgAAAzIyMzUAVFNTRQAAAA8AAANMYXZmNTcuODMuMTAwAAAAAAAAAAAAAAD/80DEAAAAA0gAAAAATEFNRTMuMTAwVVVVVVVVVVVVVUxBTUUzLjEwMFVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQsRbAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVf/zQMSkAAADSAAAAABVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV" type="audio/mpeg">
+  </audio>
+  
+  <script src="script.js"></script>
 </body>
 </html>

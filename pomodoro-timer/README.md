@@ -1,96 +1,45 @@
-# 番茄钟应用 (重构版)
+# 番茄钟应用
 
-一个功能齐全的番茄钟Web应用，帮助您提高工作效率和时间管理能力。
+一个简洁美观的番茄钟Web应用，帮助您提高工作效率。
 
-## 特性
+## 功能特性
 
 - **计时功能**：工作时间（25分钟）、休息时间（5分钟）、长休息时间（15分钟）
-- **模式切换**：支持工作/休息/长休模式自由切换
-- **任务管理**：添加、完成、删除任务列表
-- **统计追踪**：记录完成的番茄钟数量和连续完成数
+- **模式切换**：可在工作、休息、长休模式间自由切换
+- **控制按钮**：开始、暂停、重置功能
 - **自定义设置**：可调整各时间段时长
+- **任务管理**：添加、完成、删除任务
+- **统计追踪**：记录完成的番茄钟数量和连续完成数
+- **可视化进度**：圆形进度条显示剩余时间
 - **通知提醒**：时间结束时的视觉和声音提醒
-- **数据持久化**：所有设置和数据通过localStorage保存
-- **响应式设计**：适配各种设备屏幕
+- **数据持久化**：使用localStorage保存设置和数据
 
-## 重构说明
+## 技术特点
 
-本项目已重构为模块化结构，主要改进包括：
-
-- **模块化架构**：将功能拆分为独立模块（Timer, NotificationManager, TaskManager, StatsManager, SettingsManager, TaskView, PomodoroApp）
-- **面向对象设计**：使用ES6类和模块化导入导出
-- **可维护性**：清晰的代码结构和职责分离
-- **可扩展性**：易于添加新功能和修改现有功能
-
-### 模块说明
-
-- `Timer.js`: 核心计时器逻辑
-- `NotificationManager.js`: 通知和声音管理
-- `TaskManager.js`: 任务管理（增删改查）
-- `StatsManager.js`: 统计数据管理
-- `SettingsManager.js`: 应用设置管理
-- `TaskView.js`: 任务列表UI视图
-- `PomodoroApp.js`: 主应用控制器
-
-## 使用方法
-
-### 本地运行
-
-1. 克隆或下载项目
-2. 使用现代浏览器打开 `index.html` 文件
-3. 或者启动本地服务器：
-   ```bash
-   cd pomodoro-timer
-   python -m http.server 8000
-   ```
-   然后访问 http://localhost:8000
-
-### 功能操作
-
-- 点击"开始"按钮启动计时器
-- 使用"工作/休息/长休"按钮切换模式
-- 在设置区域调整时间长度
-- 在任务列表中添加和管理任务
-- 完成番茄钟后查看统计数据
-
-## 技术栈
-
-- HTML5
-- CSS3
-- JavaScript (ES6+)
-- Web APIs (localStorage, Notification, Web Audio)
+- 纯HTML/CSS/JavaScript实现
+- 响应式设计，适配移动设备
+- 使用Canvas绘制圆形进度条
+- 集成Web Notifications API
+- 使用Web Audio API播放提示音
+- 面向对象的JavaScript架构
+- 模块化代码结构
 
 ## 部署
 
-项目完全静态，可直接部署到GitHub Pages、Netlify、Vercel等静态托管服务。
+此应用为纯静态文件，可直接部署到任何Web服务器或GitHub Pages：
 
-### GitHub Pages部署
+1. 将所有文件上传到服务器
+2. 确保index.html可直接访问
+3. 应用即可正常运行
 
-1. 将项目推送到GitHub仓库
-2. 在仓库设置中启用GitHub Pages
-3. 选择源码分支（通常是main或gh-pages）
+## 使用方法
 
-**注意**：此版本的番茄钟应用已重构为单文件版本，完全兼容GitHub Pages，无需构建步骤。
-
-## 文件结构
-
-```
-pomodoro-timer/
-├── index.html          # 主页面
-├── styles.css          # 样式文件
-├── script.js           # 主JavaScript文件（单文件版本）
-├── docs/               # 文档
-│   └── DEPLOYMENT.md
-├── README.md
-├── 404.html
-├── CNAME
-└── package.json
-```
+1. 选择工作/休息/长休模式
+2. 点击"开始"按钮开始计时
+3. 可随时暂停或重置计时器
+4. 在设置中调整时间长度
+5. 在任务列表中添加和管理任务
 
 ## 浏览器兼容性
 
-支持所有现代浏览器（Chrome, Firefox, Safari, Edge）。
-
-## 许可证
-
-MIT
+支持所有现代浏览器（Chrome, Firefox, Safari, Edge等）。
