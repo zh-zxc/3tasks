@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>番茄钟 - 专注时间管理工具</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>番茄钟</h1>
+            <p>专注时间管理工具</p>
+        </header>
+        
+        <main>
+            <div class="timer-display">
+                <div id="time-display">25:00</div>
+                <div id="timer-mode">工作时间</div>
+            </div>
+            
+            <div class="controls">
+                <button id="start-btn" class="control-btn">开始</button>
+                <button id="pause-btn" class="control-btn">暂停</button>
+                <button id="reset-btn" class="control-btn">重置</button>
+            </div>
+            
+            <div class="mode-selector">
+                <button id="work-mode" class="mode-btn active">工作</button>
+                <button id="break-mode" class="mode-btn">休息</button>
+                <button id="long-break-mode" class="mode-btn">长休</button>
+            </div>
+            
+            <div class="settings">
+                <div class="setting-item">
+                    <label for="work-duration">工作时长(分钟):</label>
+                    <input type="number" id="work-duration" min="1" max="60" value="25">
+                </div>
+                <div class="setting-item">
+                    <label for="break-duration">休息时长(分钟):</label>
+                    <input type="number" id="break-duration" min="1" max="30" value="5">
+                </div>
+                <div class="setting-item">
+                    <label for="long-break-duration">长休时长(分钟):</label>
+                    <input type="number" id="long-break-duration" min="1" max="60" value="15">
+                </div>
+            </div>
+            
+            <div class="task-section">
+                <h3>任务列表</h3>
+                <div class="task-input-container">
+                    <input type="text" id="task-input" placeholder="添加新任务...">
+                    <button id="add-task-btn">添加</button>
+                </div>
+                <ul id="task-list"></ul>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-label">已完成番茄钟:</span>
+                    <span id="completed-count">0</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-label">当前连续番茄钟:</span>
+                    <span id="current-streak">0</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
