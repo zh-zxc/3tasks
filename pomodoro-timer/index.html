@@ -68,6 +68,13 @@
         </main>
     </div>
     
-    <script src="script.js"></script>
+    <script type="module">
+        import { PomodoroApp } from './src/PomodoroApp.js';
+        
+        // 页面加载完成后初始化番茄钟
+        document.addEventListener('DOMContentLoaded', () => {
+            new PomodoroApp();
+        });
+    </script>
 </body>
 </html>
