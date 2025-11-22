@@ -70,21 +70,15 @@
 2. 在仓库设置中启用GitHub Pages
 3. 选择源码分支（通常是main或gh-pages）
 
+**注意**：此版本的番茄钟应用已重构为单文件版本，完全兼容GitHub Pages，无需构建步骤。
+
 ## 文件结构
 
 ```
 pomodoro-timer/
 ├── index.html          # 主页面
 ├── styles.css          # 样式文件
-├── script.js           # 主入口文件（模块化）
-├── src/                # 源代码模块
-│   ├── Timer.js
-│   ├── NotificationManager.js
-│   ├── TaskManager.js
-│   ├── StatsManager.js
-│   ├── SettingsManager.js
-│   ├── TaskView.js
-│   └── PomodoroApp.js
+├── script.js           # 主JavaScript文件（单文件版本）
 ├── docs/               # 文档
 │   └── DEPLOYMENT.md
 ├── README.md

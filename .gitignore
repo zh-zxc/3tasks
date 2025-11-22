@@ -2,7 +2,17 @@
 # Dependencies
 node_modules/
 
-# Editor/IDE files
+# Build artifacts
+dist/
+build/
+*.js.map
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editor/IDE
 .vscode/
 .idea/
 *.swp
@@ -12,28 +22,26 @@ node_modules/
 # Logs
 *.log
 
-# Environment files
-.env
-.env.local
-*.env.*
-
-# Build artifacts
-dist/
-build/
-target/
-
-# Python artifacts (if any Python files exist)
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
 .coverage
 
-# OS generated files
+# Python (if any Python files exist)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+pip-log.txt
+pip-delete-this-directory.txt
+.pytest_cache/
+.mypy_cache/
+
+# System files
 .DS_Store
 Thumbs.db
 ```
