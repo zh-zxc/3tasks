@@ -1,9 +1,9 @@
 {
   "name": "pomodoro-timer",
-  "version": "2.0.0",
-  "description": "A Pomodoro Timer web application with task management and statistics",
+  "version": "2.1.0",
+  "description": "A Pomodoro Timer web application with task management and statistics (GitHub Pages compatible)",
   "main": "script.js",
-  "type": "module",
+  "type": "commonjs",
   "scripts": {
     "start": "python -m http.server 8000",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,7 +12,8 @@
     "pomodoro",
     "timer",
     "productivity",
-    "task-management"
+    "task-management",
+    "github-pages"
   ],
   "author": "Pomodoro Timer Developer",
   "license": "MIT",
